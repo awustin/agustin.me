@@ -17,7 +17,7 @@ const router = createRouter({
     },
     {
       path: '/:catchAll(.*)',
-      redirect: '/'
+      redirect: '/#greetings'
     }
   ]
 })

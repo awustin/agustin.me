@@ -1,16 +1,16 @@
 <script setup>
-import GreetingsCover from '../components/GreetingsCover.vue';
-import SectionsIndex from '../components/SectionsIndex.vue';
-import KnowMe from '../components/KnowMe.vue';
-import CareerSection from '../components/CareerSection.vue';
-import SkillsSection from '../components/SkillsSection.vue';
-import ProjectsSection from '../components/ProjectsSection.vue';
 import BlogSection from '../components/BlogSection.vue';
+import CareerSection from '../components/CareerSection.vue';
+import GreetingsCover from '../components/GreetingsCover.vue';
+import KnowMe from '../components/KnowMe.vue';
+import ScrollController from '../components/plugins/ScrollController.vue';
+import ProjectsSection from '../components/ProjectsSection.vue';
+import SkillsSection from '../components/SkillsSection.vue';
 </script>
 
 <template>
+    <ScrollController />
     <GreetingsCover />
-    <SectionsIndex />
     <KnowMe />
     <CareerSection />
     <SkillsSection />
@@ -18,5 +18,8 @@ import BlogSection from '../components/BlogSection.vue';
     <BlogSection />
 </template>
 
-<style scoped>
+<style>
+.section {
+    height: 100vh;
+}
 </style>
