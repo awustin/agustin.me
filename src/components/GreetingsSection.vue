@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 
 const descriptions = [
-    'a developer with five years of experience in the market &#10035;',
+    'a developer with five years of experience in the market',
     'a Computer Engineer graduate',
     'a painting enthusiast',
     'an aesthete',
@@ -43,4 +43,7 @@ const onClickDescriptions = () => index.value = (index.value == descriptions.len
 </template>
 
 <style scoped>
+.greetings {
+    cursor: default
+}
 </style>

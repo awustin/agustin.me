@@ -15,9 +15,18 @@ onMounted(() => {
     };
     let sectionsOffsets = getScrollOffsets();
     let index = 0;
-    let scrollPower = 0;
-    let sensitivity = 3;
+    let deltaSum = 0;
     let newPage = false;
+    const isDeltaAboveThreshold = (acc) => {
+        //One touchpad slide triggers from 50 to 80 wheel Events.
+        //One wheel change on the mouse triggers 1 wheel Event.
+        //As we can't tell which are the ticks coming from mouse vs the ones coming from touchpad,
+        //We will use deltaY property:
+        //One touchpad slide -> 100 to 700 accumulated delta
+        //One mouse wheel -> 100 acc. delta
+        let sensitivity = 300;
+        return acc >= sensitivity;
+    };
 
     document.removeEventListener('wheel', () => { });
     document.scrollingElement.scrollTo(0, sectionsOffsets[index]);
@@ -29,9 +38,9 @@ onMounted(() => {
             }, 100)
         }
         else {
-            scrollPower++;
-            if (scrollPower >= sensitivity) {
-                scrollPower = 0;
+            deltaSum += Math.abs(event.deltaY);
+            if (isDeltaAboveThreshold(deltaSum)) {
+                deltaSum = 0;
                 if (event.deltaY > 0) {
                     if (index < sectionsIds.length - 1) index++;
                 }
@@ -51,11 +60,11 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+    document.removeEventListener('wheel', () => { });
 })
 </script>
 
-<template>
-</template>
+<template></template>
 
 <style>
 html {
