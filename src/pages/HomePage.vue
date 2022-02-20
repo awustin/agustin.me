@@ -20,7 +20,27 @@ import SkillsSection from '../components/SkillsSection.vue';
 
 <style>
 .section {
+    position: absolute;
     height: 100vh;
+    width: 100vw;
+}
+#greetings {
+    top: 0;
+}
+#knowme {
+    top: 100vh;
+}
+#career {
+    top: 200vh;
+}
+#skills {
+    top: 300vh;
+}
+#projects {
+    top: 400vh;
+}
+#blog {
+    top: 500vh;
 }
 ::selection {
     background-color: transparent;

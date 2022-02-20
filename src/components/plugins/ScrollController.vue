@@ -24,43 +24,79 @@ onMounted(() => {
         //We will use deltaY property:
         //One touchpad slide -> 100 to 700 accumulated delta
         //One mouse wheel -> 100 acc. delta
-        let sensitivity = 300;
+        let sensitivity = 400;
         return acc >= sensitivity;
     };
+    const movePageToIndex = () => {
+        let page = document.getElementsByClassName('section')[index];
+        if (page) {
+            setTimeout(() => {
+                document.scrollingElement.scrollTo(0, sectionsOffsets[index]);
+            }, 50);
+        }
+    }
 
-    document.removeEventListener('wheel', () => { });
     document.scrollingElement.scrollTo(0, sectionsOffsets[index]);
 
     document.addEventListener('wheel', event => {
-        if (newPage) {
-            setTimeout(() => {
-                newPage = false;
-            }, 100)
-        }
-        else {
-            deltaSum += Math.abs(event.deltaY);
-            if (isDeltaAboveThreshold(deltaSum)) {
-                deltaSum = 0;
-                if (event.deltaY > 0) {
-                    if (index < sectionsIds.length - 1) index++;
-                }
-                else {
-                    if (index > 0) index--;
-                };
-                let page = document.getElementsByClassName('section')[index];
-                if (page) {
-                    setTimeout(() => {
-                        document.scrollingElement.scrollTo(0, sectionsOffsets[index]);
-                        newPage = true;
-                    }, 50);
+        if (!event.ctrlKey && !event.altKey && !event.metaKey && !event.shiftKey) {
+            if (newPage) {
+                setTimeout(() => {
+                    newPage = false;
+                }, 500)
+            }
+            else {
+                deltaSum += Math.abs(event.deltaY);
+                if (isDeltaAboveThreshold(deltaSum)) {
+                    deltaSum = 0;
+                    newPage = true;
+                    if (event.deltaY > 0) {
+                        if (index < sectionsIds.length - 1) index++;
+                    }
+                    else {
+                        if (index > 0) index--;
+                    };
+                    movePageToIndex();
+                    // let page = document.getElementsByClassName('section')[index];
+                    // if (page) {
+                    //     setTimeout(() => {
+                    //         document.scrollingElement.scrollTo(0, sectionsOffsets[index]);
+                    //     }, 50);
+                    // }
                 }
             }
+        }
+    });
+
+    document.addEventListener('wheel', event => {
+        if (event.ctrlKey) {
+            event.preventDefault();
+        }
+    }, { passive: false });
+
+    document.addEventListener('keydown', event => {
+        switch (event.code) {
+            case 'ArrowDown':
+                newPage = true;
+                deltaSum = 0;
+                index = (index >= sectionsIds.length - 1) ? index : index + 1;
+                movePageToIndex();
+                return;
+            case 'ArrowUp':
+                newPage = true;
+                deltaSum = 0;
+                index = (index <= 0) ? index : index - 1;
+                movePageToIndex();
+                return;
+            default:
+                return;
         }
     });
 })
 
 onUnmounted(() => {
     document.removeEventListener('wheel', () => { });
+    document.removeEventListener('keydown', () => { });
 })
 </script>
 
