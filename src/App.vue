@@ -11,6 +11,7 @@ import { RouterView } from 'vue-router';
 @import url('https://fonts.googleapis.com/css2?family=Patua+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cantarell:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
 
 #app {
   /* max-width: 1280px; */
@@ -26,8 +27,17 @@ h1, h2, h3 {
   font-family: 'Space Grotesk', sans-serif;
 }
 
+p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.125rem;
+}
+
 h1 {
   font-size: 4rem;
+}
+
+h2 {
+  font-size: 3rem;
 }
 
 @media (min-width: 860px) {
