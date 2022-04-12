@@ -16,6 +16,5 @@ import CareerScene from './CareerScene.vue';
     position: absolute;
     bottom: 10vh;
     right: 10vw;
-    z-index: 100;
-};
+}
 </style>
