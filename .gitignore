@@ -27,3 +27,4 @@ coverage
 *.sw?
 
 *.code-workspace
+*agustin.me.code-workspace
