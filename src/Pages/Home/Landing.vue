@@ -1,11 +1,11 @@
 <script setup>
-import BlogSection from '../components/BlogSection.vue';
-import CareerSection from '../components/CareerSection.vue';
-import GreetingsSection from '../components/GreetingsSection.vue';
-import KnowMe from '../components/KnowMe.vue';
-import ScrollController from '../components/plugins/ScrollController.vue';
-import ProjectsSection from '../components/ProjectsSection.vue';
-import SkillsSection from '../components/SkillsSection.vue';
+import BlogSection from '../../Components/Blog/BlogSection.vue';
+import CareerSection from '../../Components/Career/CareerSection.vue';
+import GreetingsSection from '../../Components/Home/GreetingsSection.vue';
+import KnowMe from '../../Components/KnowMe/KnowMe.vue';
+import ScrollController from '../../Components/Navigation/ScrollController.vue';
+import ProjectsSection from '../../Components/Projects/ProjectsSection.vue';
+import SkillsSection from '../../Components/Skills/SkillsSection.vue';
 </script>
 
 <template>

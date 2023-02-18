@@ -7,7 +7,7 @@ import { RouterView } from 'vue-router';
 </template>
 
 <style>
-@import "@/assets/base.css";
+@import "../assets/base.css";
 @import url('https://fonts.googleapis.com/css2?family=Patua+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cantarell:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap');
