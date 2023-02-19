@@ -13,7 +13,7 @@ const onClickDescriptions = () => index.value = (index.value == descriptions.len
 </script>
 
 <template>
-    <div id="greetings" class="section">
+    <div id="home" class="section">
         <div class="greetings">
             <h1>Hi! My name is Agustín, I'm</h1>
             <h1 @click="onClickDescriptions">{{ descriptions[index] }}</h1>

@@ -5,7 +5,7 @@ const badges = ['One', 'Two', 'Three'];
 </script>
 
 <template>
-    <div id="knowme" class="section">
+    <div id="bio" class="section">
         <div class="section__title">
             <h2>Know me</h2>
         </div>

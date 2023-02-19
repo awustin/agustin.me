@@ -13,8 +13,8 @@ const renderer = ref(null);
 const scene = ref(null);
 const pointLightSun = ref(null);
 const modelObj = ref({});
-const camPos0 = ref({ x: 600, y: 1100, z: 900 });
-const camTarget0 = ref({ toX: 600, toY: 0, toZ: 0 });
+const camPos0 = ref({ x: 0, y: 0, z: 2 });
+const camTarget0 = ref({ toX: 0, toY: 0, toZ: 0 });
 
 onMounted(() => {
     let prevWidth = window.innerWidth;
@@ -138,7 +138,8 @@ watch(modelObj, model => {
                     :shadow-map-size="{ width: 1, height: 1 }"
                     cast-shadow
                 />
-                <FbxModel src="/src/assets/objects/scene3/scene3.fbx" @load="onModelReady" />
+                <!-- <FbxModel src="../../../assets/objects/scene3/scene3.fbx" @load="onModelReady" /> -->
+                <GltfModel src="../../../assets/objects/panels/panels.glb" @load="onModelReady"/>
             </Scene>
         </Renderer>
     </div>

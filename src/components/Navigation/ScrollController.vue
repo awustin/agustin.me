@@ -104,7 +104,7 @@ onUnmounted(() => {
 
 <style>
 html {
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
     scroll-behavior: smooth;
 }
 ::-webkit-scrollbar {
