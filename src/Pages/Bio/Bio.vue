@@ -1,12 +1,5 @@
 <template>
-    <div id="bio-page">
+    <section id="bio-page" ref="bioPage">
         <h1>Bio</h1>
-    </div>
+    </section>
 </template>
-
-<style>
-#bio-page {
-    background-color: aquamarine;
-    grid-area: bio;
-}
-</style>

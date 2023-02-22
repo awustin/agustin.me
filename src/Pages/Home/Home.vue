@@ -1,12 +1,5 @@
 <template>
-    <div id="home-page">
+    <section id="home-page">
         <h1>Homepage</h1>
-    </div>
+    </section>
 </template>
-
-<style>
-#home-page {
-    background-color: antiquewhite;
-    grid-area: home;
-}
-</style>

@@ -1,12 +1,5 @@
 <template>
-    <div id="career-page">
+    <section id="career-page">
         <h1>Career</h1>
-    </div>
+    </section>
 </template>
-
-<style>
-#career-page {
-    background-color: darkkhaki;
-    grid-area: career;
-}
-</style>

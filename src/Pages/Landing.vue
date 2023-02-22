@@ -4,60 +4,51 @@ import Bio from './Bio/Bio.vue';
 import Career from './Career/Career.vue';
 import Skills from './Skills/Skills.vue';
 import Blog from './Blog/Blog.vue';
-import { onMounted } from 'vue';
-import { onWheel } from '../Utils/transitions';
 
-onMounted(() => {
-    onWheel();
-});
+const MAIN_PAGE_CLASS = 'main-page';
+
 </script>
 
 <template>
-    <div id="animated-grid">
+    <main :class="MAIN_PAGE_CLASS">
         <Home />
         <Bio />
         <Career />
         <Skills />
         <Blog />
-    </div>
+    </main>
 </template>
 
 <style>
-#animated-grid {
+.main-page {
     height: 100vh;
     width: 100vw;
-    display: grid;
-    grid-template-columns: 100% auto auto;
-    grid-template-rows: 100% auto auto;
-    grid-template-areas: 
-        "home bio blog"
-        "career career blog"
-        "skills skills blog";
-    overflow: hidden;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
 }
-/* .section {
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-} */
-/* #home {
-    top: 0;
-} */
-/* #bio {
-    top: 100vh;
-} */
-/* #career {
-    top: 200vh;
+.main-page::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
 }
-#skills {
-    top: 300vh;
+section {
+    height: inherit;
+    width: inherit;
 }
-#projects {
-    top: 400vh;
+#home-page {
+    background-color: antiquewhite;
 }
-#blog {
-    top: 500vh;
-} */
+#bio-page {
+    background-color: aquamarine;
+}
+#career-page {
+    background-color: darkkhaki;
+}
+#skills-page {
+    background-color: rgb(160, 230, 252);
+}
+#blog-page {
+    background-color: rgb(188, 210, 238);
+}
 ::selection {
     background-color: transparent;
 }
