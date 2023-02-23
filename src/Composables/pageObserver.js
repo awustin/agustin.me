@@ -1,4 +1,7 @@
 import { onMounted, onUnmounted } from 'vue';
+import { usePages } from './pages';
+
+const { getPage, setCurrentPage } = usePages();
 
 /*
 State of the app for the animations:
@@ -11,10 +14,16 @@ export const usePageObserver = elementRef => {
         throw `Element ref was expected as an argument but ${elementRef} was passed`;
     }
 
-    const observer = new IntersectionObserver(() => console.log(scrollStore.baz),
+    const handleIntersect = ([{ target: element }]) => {
+        setCurrentPage(element.id);
+        console.log(getPage.value);
+    };
+
+    const observer = new IntersectionObserver(
+        handleIntersect,
         {
             rootMargin: '0px',
-            threshold: 0.1
+            threshold: 0.9
         }
     );
 

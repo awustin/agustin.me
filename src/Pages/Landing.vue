@@ -20,7 +20,7 @@ const MAIN_PAGE_CLASS = 'main-page';
 
 <style>
 .main-page {
-    height: 120vh;
+    height: 100vh;
     width: 100vw;
     overflow-y: scroll;
     -ms-overflow-style: none;  /* Internet Explorer 10+ */

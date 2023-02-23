@@ -1,22 +1,18 @@
 import { ref, computed } from 'vue';
 
 const state = ref({
-    page: 1,
-    last: 5,
+    current: null
 });
 
 export const usePages = () => {
-    const getPage = computed(() => state.value.page);
-    const next = () => {
-        state.value.page++;
-    };
-    const previous = () => {
-        state.value.page--;
-    };
+    const getPage = computed(() => state.value.current);
+
+    const setCurrentPage = key => {
+        state.value.current = key;
+    }
 
     return {
         getPage,
-        next,
-        previous,
+        setCurrentPage,
     };
 };
