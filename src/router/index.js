@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Landing from '../Pages/Landing.vue';
+import Main from '../Pages/Main.vue';
 
 export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,7 +7,7 @@ export const router = createRouter({
     {
       path: '/',
       name: '',
-      component: Landing
+      component: Main
     },
     {
       path: '/:catchAll(.*)',

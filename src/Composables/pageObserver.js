@@ -1,29 +1,34 @@
-import { onMounted, onUnmounted } from 'vue';
-import { usePages } from './pages';
+import { ref, watch, onMounted, onUnmounted } from 'vue';
+import { usePages } from './pagesState';
 
-const { getPage, setCurrentPage } = usePages();
+const { getCurrentPage, setCurrentPage } = usePages();
 
-/*
-State of the app for the animations:
-- What page I am in
-- Am I entering/leaving a page
-*/
-
-export const usePageObserver = elementRef => {
+/**
+ * Accepts the reference of the element to observe as the first parameter, 
+ * and a callback that will execute when intersection is detected. A fallback
+ * function can be provided as a third parameter to execute when there's no
+ * intersection detected.
+ * 
+ * @param {Ref} elementRef
+ * @param {Function} callbackIn
+ * @param {Function} callbackOut
+ */
+export const usePageObserver = (elementRef, callbackIn = null, callbackOut = null) => {
     if(!elementRef) {
         throw `Element ref was expected as an argument but ${elementRef} was passed`;
     }
 
-    const handleIntersect = ([{ target: element }]) => {
-        setCurrentPage(element.id);
-        console.log(getPage.value);
+    const handleIntersect = ([{ isIntersecting, target: element }]) => {
+        if(isIntersecting) {
+            setCurrentPage(element.id);
+        }
     };
 
     const observer = new IntersectionObserver(
         handleIntersect,
         {
             rootMargin: '0px',
-            threshold: 0.9
+            threshold: 0.5
         }
     );
 
@@ -38,4 +43,15 @@ export const usePageObserver = elementRef => {
 
         observer.unobserve(element);
     });
-}
+
+    watch(getCurrentPage, currentPage => {
+        if(currentPage === elementRef.value.id) {
+            if(typeof callbackIn == 'function') {
+                callbackIn();
+            }
+        } else if(typeof callbackOut == 'function') {
+            callbackOut();
+        }
+    });
+
+};
