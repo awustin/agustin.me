@@ -28,7 +28,7 @@ export const usePageObserver = (elementRef, callbackIn = null, callbackOut = nul
         handleIntersect,
         {
             rootMargin: '0px',
-            threshold: 0.4
+            threshold: 0.33
         }
     );
 
