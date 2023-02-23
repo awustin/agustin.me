@@ -6,7 +6,6 @@ import Skills from './Skills/Skills.vue';
 import Blog from './Blog/Blog.vue';
 
 const MAIN_PAGE_CLASS = 'main-page';
-
 </script>
 
 <template>
@@ -21,7 +20,7 @@ const MAIN_PAGE_CLASS = 'main-page';
 
 <style>
 .main-page {
-    height: 100vh;
+    height: 120vh;
     width: 100vw;
     overflow-y: scroll;
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
@@ -33,6 +32,7 @@ const MAIN_PAGE_CLASS = 'main-page';
 section {
     height: inherit;
     width: inherit;
+    overflow-y: hidden;
 }
 #home-page {
     background-color: antiquewhite;
