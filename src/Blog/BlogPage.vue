@@ -1,22 +1,22 @@
 <script setup>
 import { ref } from 'vue';
-import { usePageObserver } from '../../Composables/pageObserver';
+import { usePageObserver } from '../Shared/Composables/pageObserver';
 
-const skillsPage = ref(null);
+const blogPage = ref(null);
 const highlightClass = ref(null);
 const highlightMe = value => {
     highlightClass.value = (value) ? 'red' : null;
 };
 
 usePageObserver(
-    skillsPage,
+    blogPage,
     () => highlightMe(true),
     () => highlightMe(false)
 );
 </script>
 
 <template>
-    <section ref="skillsPage" :class="highlightClass">
-        <h1>Skills</h1>
+    <section ref="blogPage" :class="highlightClass">
+        <h1>Blog</h1>
     </section>
 </template>

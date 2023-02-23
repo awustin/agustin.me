@@ -9,7 +9,7 @@ const { getCurrentPage, setCurrentPage } = usePages();
  * function can be provided as a third parameter to execute when there's no
  * intersection detected.
  * 
- * @param {Ref} elementRef
+ * @param {ref} elementRef
  * @param {Function} callbackIn
  * @param {Function} callbackOut
  */
@@ -28,7 +28,7 @@ export const usePageObserver = (elementRef, callbackIn = null, callbackOut = nul
         handleIntersect,
         {
             rootMargin: '0px',
-            threshold: 0.5
+            threshold: 0.4
         }
     );
 
