@@ -25,7 +25,7 @@ const BLOG_PAGE_ID = 'blog-page';
 
 <style>
 .main-page {
-    height: 140vh;
+    height: 100vh;
     width: 100%;
 }
 section {

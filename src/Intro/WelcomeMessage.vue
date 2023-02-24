@@ -4,8 +4,8 @@ import { ref } from 'vue';
 const WELCOME_MESSAGE_CLASS = "welcome-message";
 const WELCOME_MESSAGE_UNDERLINE_CLASS = "welcome-message__underline";
 const descriptions = [
-    'a developer with five years of experience in the market',
     'a Computer Engineer dedicated to software',
+    'a developer with five years of experience in the market',
     'a painting enthusiast',
     'a creative person'
 ];

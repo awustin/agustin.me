@@ -2,17 +2,21 @@
 import { ref } from 'vue';
 import { usePageObserver } from '../Shared/Composables/pageObserver';
 import WelcomeMessage from './WelcomeMessage.vue';
+import anime from 'animejs';
 
 const introPage = ref(null);
-const highlightClass = ref(null);
-const highlightMe = value => {
-    highlightClass.value = (value) ? 'red' : null;
+const fadeIn = () => {
+    anime({
+        targets: introPage.value,
+        opacity: 1,
+        duration: 5000,
+        delay: 1000,
+    });
 };
 
 usePageObserver(
     introPage,
-    () => highlightMe(true),
-    () => highlightMe(false)
+    fadeIn,
 );
 </script>
 
@@ -21,3 +25,9 @@ usePageObserver(
         <WelcomeMessage />
     </section>
 </template>
+
+<style>
+#intro-page {
+    opacity: 0;
+}
+</style>
