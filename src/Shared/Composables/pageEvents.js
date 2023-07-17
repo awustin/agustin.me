@@ -4,16 +4,11 @@ import { usePages } from './pagesState';
 const { getCurrentPage, setCurrentPage } = usePages();
 
 /**
- * Accepts the reference of the element to observe as the first parameter, 
- * and a callback that will execute when intersection is detected. A fallback
- * function can be provided as a third parameter to execute when there's no
- * intersection detected.
+ * Sets the object ref passed as the current page, based on `IntersectionObserver` API. 
  * 
  * @param {ref} elementRef
- * @param {Function} callbackIn
- * @param {Function} callbackOut
  */
-export const usePageObserver = (elementRef, callbackIn = null, callbackOut = null) => {
+export const usePageInViewport = elementRef => {
     if(!elementRef) {
         throw `Element ref was expected as an argument but ${elementRef} was passed`;
     }
@@ -23,14 +18,11 @@ export const usePageObserver = (elementRef, callbackIn = null, callbackOut = nul
             setCurrentPage(element.id);
         }
     };
-
-    const observer = new IntersectionObserver(
-        handleIntersect,
-        {
-            rootMargin: '0px',
-            threshold: 0.33
-        }
-    );
+    const options = {
+        rootMargin: '0px',
+        threshold: 0.33
+    };
+    const observer = new IntersectionObserver(handleIntersect, options);
 
     onMounted(() => {
         const { value: element } = elementRef;
@@ -43,9 +35,23 @@ export const usePageObserver = (elementRef, callbackIn = null, callbackOut = nul
 
         observer.unobserve(element);
     });
+};
+
+/**
+ * Executes the first callback when the element passed is the current page.
+ * Executes the second callback if not.
+ * 
+ * @param {String|Number} pageId
+ * @param {function} callbackIn 
+ * @param {function} callbackOut 
+ */
+export const useWatchPage = (pageId = null, callbackIn = null, callbackOut = null) => {
+    if(!pageId) {
+        throw `Page id was expected as an argument but null was passed`;
+    }
 
     watch(getCurrentPage, currentPage => {
-        if(currentPage === elementRef.value.id) {
+        if(currentPage === pageId) {
             if(typeof callbackIn == 'function') {
                 callbackIn();
             }
@@ -53,5 +59,4 @@ export const usePageObserver = (elementRef, callbackIn = null, callbackOut = nul
             callbackOut();
         }
     });
-
 };

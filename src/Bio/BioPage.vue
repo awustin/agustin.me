@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import { usePageObserver } from '../Shared/Composables/pageObserver';
+import { usePageInViewport } from '../Shared/Composables/pageEvents';
 
 const bioPage = ref(null);
 const highlightClass = ref(null);
@@ -8,11 +8,7 @@ const highlightMe = value => {
     highlightClass.value = (value) ? 'red' : null;
 };
 
-usePageObserver(
-    bioPage,
-    () => highlightMe(true),
-    () => highlightMe(false)
-);
+usePageInViewport(bioPage);
 </script>
 
 <template>

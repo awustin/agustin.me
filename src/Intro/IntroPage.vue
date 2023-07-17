@@ -1,33 +1,15 @@
 <script setup>
 import { ref } from 'vue';
-import { usePageObserver } from '../Shared/Composables/pageObserver';
+import { usePageInViewport } from '../Shared/Composables/pageEvents';
 import WelcomeMessage from './WelcomeMessage.vue';
-import anime from 'animejs';
 
 const introPage = ref(null);
-const fadeIn = () => {
-    anime({
-        targets: introPage.value,
-        opacity: 1,
-        duration: 5000,
-        delay: 1000,
-    });
-};
 
-usePageObserver(
-    introPage,
-    fadeIn,
-);
+usePageInViewport(introPage);
 </script>
 
 <template>
-    <section ref="introPage" :class="highlightClass">
+    <section ref="introPage">
         <WelcomeMessage />
     </section>
 </template>
-
-<style>
-#intro-page {
-    opacity: 0;
-}
-</style>

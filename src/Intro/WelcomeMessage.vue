@@ -1,8 +1,10 @@
 <script setup>
 import { ref } from 'vue';
+import { useWatchPage } from '../Shared/Composables/pageEvents';
 
-const WELCOME_MESSAGE_CLASS = "welcome-message";
-const WELCOME_MESSAGE_UNDERLINE_CLASS = "welcome-message__underline";
+const INTRO_BLOCK = "intro-block";
+const INTRO_BLOCK_TEXT = "intro-block__text";
+const WELCOME_MESSAGE_UNDERLINE_CLASS = "welcome-container--underline";
 const descriptions = [
     'a Computer Engineer dedicated to software',
     'a developer with five years of experience in the market',
@@ -10,7 +12,6 @@ const descriptions = [
     'a creative person'
 ];
 const index = ref(0);
-
 const onClickDescriptions = () => {
     if(index.value == descriptions.length - 1) {
         index.value = 0;
@@ -18,18 +19,21 @@ const onClickDescriptions = () => {
         index.value++;
     }
 };
+
+useWatchPage('intro-page', ()=>console.log('hi'));
 </script>
 
 <template>
-    <div :class="WELCOME_MESSAGE_CLASS">
-        <h1>Hi! My name is Agustín, I'm</h1>
+    <div :class="INTRO_BLOCK">
+        <h1 :class="INTRO_BLOCK_TEXT">Hi! My name is Agustín, I'm</h1>
         <h1 @click="onClickDescriptions">{{ descriptions[index] }}</h1>
         <div :class="WELCOME_MESSAGE_UNDERLINE_CLASS">&ThinSpace;</div>
+        <!-- <div v-on:current-page="() => console.log('hi')"></div> -->
     </div>
 </template>
 
 <style scoped>
-.welcome-message {
+.intro-block {
     cursor: default;
     display: flex;
     flex-direction: column;
